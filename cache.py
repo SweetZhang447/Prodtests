@@ -24,3 +24,6 @@ class LRUCache:
       del self._data[evicted]
     self._data[key] = value
     self._order.append(key)
+
+  def __len__(self):
+    return len(self._order)
