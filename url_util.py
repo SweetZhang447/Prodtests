@@ -11,3 +11,7 @@ def build_url(base, params=None):
   if not params:
     return base
   return f"{base}?{build_query_string(params)}"
+
+
+def strip_trailing_slash(url):
+  return url[:-1] if url.endswith("/") else url
