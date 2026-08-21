@@ -18,3 +18,8 @@ def slugify(text):
       out.append("-")
       prev_hyphen = True
   return "".join(out).strip("-")
+
+
+def title_case(text):
+  """Capitalize the first letter of each whitespace-separated word."""
+  return " ".join(word[:1].upper() + word[1:] for word in text.split())
