@@ -15,3 +15,14 @@ def next_business_day(d):
 
 def days_between(start, end):
   return (end - start).days
+
+
+def days_until(target, today=date.today()):
+  """Return the number of days from today until `target`.
+
+  BUG: `today=date.today()` is a default argument evaluated once, at
+  function-definition/import time, not on each call. `today` gets "frozen"
+  to whatever date the process happened to import this module on, so the
+  result silently drifts stale for every call in a long-running process.
+  """
+  return (target - today).days
