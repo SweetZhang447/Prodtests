@@ -12,3 +12,11 @@ def backoff_seconds(attempt, base=1.0, cap=60.0):
 
 def should_retry(attempt, max_attempts=5):
   return attempt < max_attempts
+
+
+def jittered_backoff_seconds(attempt, base=1.0, cap=60.0, jitter_fraction=0.1):
+  """backoff_seconds() with +/- jitter_fraction of random jitter applied."""
+  import random
+  delay = backoff_seconds(attempt, base=base, cap=cap)
+  jitter = delay * jitter_fraction
+  return delay + random.uniform(-jitter, jitter)
