@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       note:
-        description: "Short note to include in the generated change"
+        description: "Short note to include in the PR body"
         required: false
         default: "bot PR test"
 permissions:
@@ -20,24 +20,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          cat >> dummy.py <<'PY'
-
-
-def bot_generated_helper(values):
-    """Sum the positive numbers in values."""
-    total = 0
-    for v in values:
-        if v > 0:
-            total += v
-    return total
-PY
-          git commit -am "Add bot_generated_helper (${{ inputs.note }})"
+          printf '\n\ndef bot_generated_helper(values):\n    """Sum the positive numbers in values."""\n    total = 0\n    for v in values:\n        if v > 0:\n            total += v\n    return total\n' >> dummy.py
+          git commit -am "Add bot_generated_helper"
           git push origin "$BRANCH"
           echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
       - name: Open PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOTE: ${{ inputs.note }}
         run: |
           gh pr create --base main --head "$BRANCH" \
             --title "Bot PR: add bot_generated_helper" \
-            --body "Opened by github-actions[bot] via the Bot PR workflow. Note: ${{ inputs.note }}"
+            --body "Opened by github-actions[bot] via the Bot PR workflow. Note: $NOTE"
