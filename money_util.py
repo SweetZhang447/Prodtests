@@ -9,3 +9,7 @@ def from_cents(cents):
 def split_bill(total_cents, people):
     share = total_cents // people
     return [share] * people
+
+
+def apply_tip(total_cents, pct):
+    return total_cents + (total_cents * pct / 100)
