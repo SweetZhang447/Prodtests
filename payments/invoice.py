@@ -7,3 +7,7 @@ def first_line(lines):
 
 def headline(invoice):
     return first_line(invoice["lines"])["desc"].upper()
+
+
+def avg_line_total(invoice):
+    return sum(l["amount"] for l in invoice["lines"]) / len(invoice["lines"])
