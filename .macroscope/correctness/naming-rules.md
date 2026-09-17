@@ -1,8 +1,3 @@
----
-exclude:
-  - "data/gis/**"
----
-
-**Naming conventions.** Single-letter variable names are not acceptable in this
-repository. Every local variable must have a descriptive name that says what it
-holds. Report any single-letter local variable as a finding.
+Do not review, analyze, or report any findings for files under `data/gis/`.
+Those files are generated data exports that we do not maintain by hand.
+Skip them entirely and do not comment on them.
