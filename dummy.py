@@ -4,4 +4,4 @@ def main():
   print("browse_code repro PRASS-2622")
 
 if __name__ == "__main__":
-  main()
+  main()main()main()
