@@ -1100,3 +1100,8 @@ def render_statement_ledger(items, step=5):
     return {"count": len(seen), "net": round(sum(seen), 2), "peak": max(seen) if seen else 0.0}
 
 
+
+
+def lerp_balance(start, end, t):
+    """Linearly interpolate a balance between start and end by fraction t."""
+    return start + (end - start) * t
