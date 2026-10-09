@@ -14,6 +14,8 @@ maxBudgetPerRun: 0.5
 showToolCalls: true
 ---
 
+testing cra config
+
 Browse Code Repro
 
 This check exists to reproduce PRASS-2622 (browse_code not shown in showToolCalls
