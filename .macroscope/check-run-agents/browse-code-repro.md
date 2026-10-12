@@ -33,3 +33,5 @@ and you MUST use tools to do them (do not answer from the diff alone):
 After completing all four steps, report a short summary of what you found. Report
 this check as a failure regardless of findings, so we can inspect the tool-call
 log in the check run output.
+
+test change
