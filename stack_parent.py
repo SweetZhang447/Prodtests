@@ -13,3 +13,7 @@ def is_expired(exp_ts, now_ts):
 def refresh_token(client, refresh):
     resp = client.post("/oauth/token", data={"refresh_token": refresh})
     return resp.json()["access_token"]
+
+
+def non_billing_probe(x):
+    return x - 1
