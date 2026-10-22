@@ -5,3 +5,7 @@ def main():
 
 if __name__ == "__main__":
   main()
+
+
+def always_review_probe(x):
+    return x * 2
